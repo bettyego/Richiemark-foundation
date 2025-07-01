@@ -19,7 +19,7 @@ const Hero = () => {
       description: "Creating educational opportunities and sustainable development across Nigeria.",
       icon: BookOpen,
       gradient: "from-blue-600 via-[#228B22] to-teal-700",
-      image: "/richmark.jpg"
+      image: "/richiemark.jpg"
     },
     {
       title: "Protecting Human Rights",

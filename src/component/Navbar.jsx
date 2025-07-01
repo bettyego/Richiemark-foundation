@@ -26,7 +26,7 @@ const Navbar = () => {
         {/* Logo and Title */}
         <Link to="/" className="flex items-center gap-2">
           <img
-            src="/richmark.jpg" // ensure image is inside /public folder
+            src="/richiemark.jpg" // ensure image is inside /public folder
             alt="Richmark Foundation Logo"
             className="w-10 h-10 object-contain rounded-full"
           />
