@@ -11,7 +11,7 @@ const Hero = () => {
       description: "Providing accessible healthcare and medical support to Nigerian communities in need.",
       icon: Heart,
       gradient: "from-green-600 via-[#228B22] to-emerald-700",
-      image: "/hel.webp"
+      image: "/richm1.jpg"
     },
     {
       title: "Building Stronger Communities",
@@ -19,7 +19,7 @@ const Hero = () => {
       description: "Creating educational opportunities and sustainable development across Nigeria.",
       icon: BookOpen,
       gradient: "from-blue-600 via-[#228B22] to-teal-700",
-      image: "/richiemark.jpg"
+      image: "/hel.webp"
     },
     {
       title: "Protecting Human Rights",
@@ -27,7 +27,23 @@ const Hero = () => {
       description: "Defending human dignity and promoting justice for all Nigerians.",
       icon: Shield,
       gradient: "from-purple-600 via-[#228B22] to-indigo-700",
-      image: "/hel.webp"
+      image: "/richm3.jpg"
+    },
+    {
+      title: "Community Development",
+      subtitle: "Building Together",
+      description: "Strengthening communities through collaborative development and sustainable initiatives.",
+      icon: Users,
+      gradient: "from-orange-600 via-[#FFA500] to-yellow-600",
+      image: "/richm4.jpg"
+    },
+    {
+      title: "Emergency Response",
+      subtitle: "When Help is Needed",
+      description: "Rapid response and relief services for communities facing emergencies and disasters.",
+      icon: Shield,
+      gradient: "from-red-600 via-[#228B22] to-pink-700",
+      image: "/richm5.jpg"
     }
   ];
 

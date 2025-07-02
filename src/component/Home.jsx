@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "./Navbar";
 import Hero from "./Hero";
 import FocusAreas from "./FocusAreas";
+import Gallery from "./Gallery";
 import CallToAction from "./CallToAction";
 import Footer from "./Footer";
 import SEO from "./SEO";
@@ -17,6 +18,7 @@ const Home = () => {
       <Navbar />
       <Hero />
       <FocusAreas />
+      <Gallery />
       <CallToAction />
       <Footer />
       <BackToTop />

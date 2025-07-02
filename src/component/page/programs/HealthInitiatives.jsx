@@ -124,6 +124,50 @@ const HealthInitiatives = () => {
         </div>
       </section>
 
+      {/* Featured Health Program */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="relative">
+              <img
+                src="/richm1.jpg"
+                alt="Health Initiative in Action"
+                className="w-full h-96 object-cover rounded-xl shadow-lg"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent rounded-xl"></div>
+              <div className="absolute bottom-6 left-6 text-white">
+                <h3 className="text-2xl font-bold mb-2">Mobile Health Clinic</h3>
+                <p className="text-sm opacity-90">Bringing healthcare to remote communities</p>
+              </div>
+            </div>
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold text-[#228B22] mb-6">
+                Healthcare Where It's Needed Most
+              </h2>
+              <p className="text-lg text-gray-700 mb-6">
+                Our mobile health clinics travel to the most remote areas of Nigeria, providing
+                essential medical services to communities that have limited access to healthcare facilities.
+              </p>
+              <p className="text-lg text-gray-700 mb-6">
+                Each clinic is equipped with modern medical equipment and staffed by qualified
+                healthcare professionals who provide comprehensive care including diagnostics,
+                treatment, and health education.
+              </p>
+              <div className="grid grid-cols-2 gap-4 text-center">
+                <div className="bg-white p-4 rounded-lg shadow">
+                  <div className="text-2xl font-bold text-[#FFA500]">500+</div>
+                  <div className="text-sm text-gray-600">Patients/Month</div>
+                </div>
+                <div className="bg-white p-4 rounded-lg shadow">
+                  <div className="text-2xl font-bold text-[#FFA500]">15</div>
+                  <div className="text-sm text-gray-600">Remote Locations</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Impact Stories */}
       <section className="py-16 bg-white">
         <div className="max-w-6xl mx-auto px-6">

@@ -51,23 +51,37 @@ const About = () => {
       <section className="py-16 bg-gray-50">
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-[#228B22] mb-12">Our Story</h2>
-          <div className="max-w-4xl mx-auto">
-            <p className="text-lg text-gray-700 leading-relaxed mb-6">
-              Founded with a vision to make a meaningful difference, Richmark Foundation began as a
-              grassroots initiative to address the pressing needs of underserved Nigerian communities. Our
-              journey started when we recognized the gaps in essential services across Nigeria and decided to take action.
-            </p>
-            <p className="text-lg text-gray-700 leading-relaxed mb-6">
-              Over the years, we have grown from a small group of passionate individuals to a 
-              comprehensive foundation that impacts thousands of lives. Our work spans across 
-              multiple sectors including healthcare, education, human rights advocacy, and 
-              community development.
-            </p>
-            <p className="text-lg text-gray-700 leading-relaxed">
-              Today, we continue to expand our reach and deepen our impact, always staying true 
-              to our core values of compassion, integrity, and sustainable change. Every project 
-              we undertake is designed to create lasting positive transformation in the communities we serve.
-            </p>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                Founded with a vision to make a meaningful difference, Richmark Foundation began as a
+                grassroots initiative to address the pressing needs of underserved Nigerian communities. Our
+                journey started when we recognized the gaps in essential services across Nigeria and decided to take action.
+              </p>
+              <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                Over the years, we have grown from a small group of passionate individuals to a
+                comprehensive foundation that impacts thousands of lives. Our work spans across
+                multiple sectors including healthcare, education, human rights advocacy, and
+                community development.
+              </p>
+              <p className="text-lg text-gray-700 leading-relaxed">
+                Today, we continue to expand our reach and deepen our impact, always staying true
+                to our core values of compassion, integrity, and sustainable change. Every project
+                we undertake is designed to create lasting positive transformation in the communities we serve.
+              </p>
+            </div>
+            <div className="relative">
+              <img
+                src="/richm4.jpg"
+                alt="Richmark Foundation Community Development"
+                className="w-full h-96 object-cover rounded-xl shadow-lg"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent rounded-xl"></div>
+              <div className="absolute bottom-6 left-6 text-white">
+                <h3 className="text-xl font-semibold mb-2">Building Communities</h3>
+                <p className="text-sm opacity-90">Creating lasting change across Nigeria</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>

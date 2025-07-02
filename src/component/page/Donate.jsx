@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
 import Navbar from '../Navbar';
 import Footer from '../Footer';
+import PaymentIntegration from '../PaymentIntegration';
+import { CheckCircle, AlertCircle } from 'lucide-react';
 
 const Donate = () => {
   const [selectedAmount, setSelectedAmount] = useState('');
   const [customAmount, setCustomAmount] = useState('');
   const [donationType, setDonationType] = useState('one-time');
+  const [showPayment, setShowPayment] = useState(false);
+  const [paymentSuccess, setPaymentSuccess] = useState(false);
+  const [paymentError, setPaymentError] = useState('');
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -35,8 +40,51 @@ const Donate = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const amount = selectedAmount || customAmount;
-    alert(`Thank you for your ${donationType} donation of $${amount}! This is a demo - no actual payment was processed.`);
+
+    // Validate form
+    if (!formData.firstName || !formData.lastName || !formData.email) {
+      setPaymentError('Please fill in all required fields');
+      return;
+    }
+
+    if (!selectedAmount && !customAmount) {
+      setPaymentError('Please select or enter a donation amount');
+      return;
+    }
+
+    // Clear any previous errors
+    setPaymentError('');
+
+    // Show payment modal
+    setShowPayment(true);
+  };
+
+  const handlePaymentSuccess = (paymentData) => {
+    setShowPayment(false);
+    setPaymentSuccess(true);
+
+    // Here you would typically send the payment data to your backend
+    console.log('Payment successful:', paymentData);
+
+    // Reset form
+    setFormData({
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: '',
+      message: ''
+    });
+    setSelectedAmount(null);
+    setCustomAmount('');
+  };
+
+  const handlePaymentError = (error) => {
+    setShowPayment(false);
+    setPaymentError(error);
+  };
+
+  const closePaymentModal = () => {
+    setShowPayment(false);
   };
 
   return (
@@ -187,6 +235,22 @@ const Donate = () => {
                 />
               </div>
 
+              {/* Error Message */}
+              {paymentError && (
+                <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-md flex items-center gap-2">
+                  <AlertCircle className="w-5 h-5 text-red-500" />
+                  <span className="text-red-700">{paymentError}</span>
+                </div>
+              )}
+
+              {/* Success Message */}
+              {paymentSuccess && (
+                <div className="mb-4 p-4 bg-green-50 border border-green-200 rounded-md flex items-center gap-2">
+                  <CheckCircle className="w-5 h-5 text-green-500" />
+                  <span className="text-green-700">Thank you! Your donation has been processed successfully.</span>
+                </div>
+              )}
+
               {/* Submit Button */}
               <div className="text-center">
                 <button
@@ -197,7 +261,7 @@ const Donate = () => {
                   Donate ₦{(selectedAmount || customAmount || '0').toLocaleString ? (selectedAmount || customAmount || '0').toLocaleString() : (selectedAmount || customAmount || '0')} {donationType === 'monthly' ? '/month' : ''}
                 </button>
                 <p className="text-sm text-gray-500 mt-4">
-                  This is a demo form. No actual payment will be processed.
+                  Secure payment processing via Paystack and Flutterwave
                 </p>
               </div>
             </form>
@@ -230,6 +294,17 @@ const Donate = () => {
       </section>
 
       <Footer />
+
+      {/* Payment Modal */}
+      {showPayment && (
+        <PaymentIntegration
+          amount={selectedAmount || customAmount}
+          donorInfo={formData}
+          onSuccess={handlePaymentSuccess}
+          onError={handlePaymentError}
+          onClose={closePaymentModal}
+        />
+      )}
     </div>
   );
 };
