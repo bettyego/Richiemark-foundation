@@ -23,7 +23,7 @@ const PaymentIntegration = ({ amount, donorInfo, onSuccess, onError, onClose }) 
 
   const processPaystackPayment = () => {
     const handler = window.PaystackPop.setup({
-      key: process.env.REACT_APP_PAYSTACK_PUBLIC_KEY || 'pk_test_your_paystack_public_key_here', // Replace with your actual key
+      key: import.meta.env.VITE_PAYSTACK_PUBLIC_KEY || 'pk_test_your_paystack_public_key_here', // Replace with your actual key
       email: donorInfo.email,
       amount: amount * 100, // Paystack expects amount in kobo
       currency: 'NGN',
@@ -69,7 +69,7 @@ const PaymentIntegration = ({ amount, donorInfo, onSuccess, onError, onClose }) 
 
   const processFlutterwavePayment = () => {
     window.FlutterwaveCheckout({
-      public_key: process.env.REACT_APP_FLUTTERWAVE_PUBLIC_KEY || 'FLWPUBK_TEST-your_flutterwave_public_key_here', // Replace with your actual key
+      public_key: import.meta.env.VITE_FLUTTERWAVE_PUBLIC_KEY || 'FLWPUBK_TEST-your_flutterwave_public_key_here', // Replace with your actual key
       tx_ref: `richmark_${Date.now()}`,
       amount: amount,
       currency: 'NGN',
@@ -120,62 +120,62 @@ const PaymentIntegration = ({ amount, donorInfo, onSuccess, onError, onClose }) 
   };
 
   return (
-    <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-lg max-w-md w-full p-6">
-        <div className="text-center mb-6">
-          <h3 className="text-2xl font-bold text-[#228B22] mb-2">Complete Your Donation</h3>
-          <p className="text-gray-600">₦{amount.toLocaleString()} to Richmark Foundation</p>
+    <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 overflow-y-auto">
+      <div className="bg-white rounded-lg max-w-md w-full p-6 my-8 max-h-[90vh] overflow-y-auto">
+        <div className="text-center mb-4">
+          <h3 className="text-xl font-bold text-[#228B22] mb-1">Complete Your Donation</h3>
+          <p className="text-gray-600 text-sm">₦{amount.toLocaleString()} to Richmark Foundation</p>
         </div>
 
         {!isProcessing && paymentStatus !== 'success' && (
           <>
             {/* Payment Method Selection */}
-            <div className="mb-6">
-              <label className="block text-sm font-medium text-gray-700 mb-3">Choose Payment Method</label>
-              
-              <div className="space-y-3">
-                <label className="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+            <div className="mb-4">
+              <label className="block text-sm font-medium text-gray-700 mb-2">Choose Payment Method</label>
+
+              <div className="space-y-2">
+                <label className="flex items-center p-2 border rounded-lg cursor-pointer hover:bg-gray-50">
                   <input
                     type="radio"
                     name="paymentMethod"
                     value="paystack"
                     checked={paymentMethod === 'paystack'}
                     onChange={(e) => setPaymentMethod(e.target.value)}
-                    className="mr-3"
+                    className="mr-2"
                   />
                   <div>
-                    <div className="font-medium">Paystack</div>
-                    <div className="text-sm text-gray-500">Card, Bank Transfer, USSD</div>
+                    <div className="font-medium text-sm">Paystack</div>
+                    <div className="text-xs text-gray-500">Card, Bank Transfer, USSD</div>
                   </div>
                 </label>
 
-                <label className="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                <label className="flex items-center p-2 border rounded-lg cursor-pointer hover:bg-gray-50">
                   <input
                     type="radio"
                     name="paymentMethod"
                     value="flutterwave"
                     checked={paymentMethod === 'flutterwave'}
                     onChange={(e) => setPaymentMethod(e.target.value)}
-                    className="mr-3"
+                    className="mr-2"
                   />
                   <div>
-                    <div className="font-medium">Flutterwave</div>
-                    <div className="text-sm text-gray-500">Card, Mobile Money, Bank Transfer</div>
+                    <div className="font-medium text-sm">Flutterwave</div>
+                    <div className="text-xs text-gray-500">Card, Mobile Money, Bank Transfer</div>
                   </div>
                 </label>
 
-                <label className="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                <label className="flex items-center p-2 border rounded-lg cursor-pointer hover:bg-gray-50">
                   <input
                     type="radio"
                     name="paymentMethod"
                     value="bank"
                     checked={paymentMethod === 'bank'}
                     onChange={(e) => setPaymentMethod(e.target.value)}
-                    className="mr-3"
+                    className="mr-2"
                   />
                   <div>
-                    <div className="font-medium">Direct Bank Transfer</div>
-                    <div className="text-sm text-gray-500">Transfer directly to our account</div>
+                    <div className="font-medium text-sm">Direct Bank Transfer</div>
+                    <div className="text-xs text-gray-500">Transfer directly to our account</div>
                   </div>
                 </label>
               </div>
@@ -183,25 +183,25 @@ const PaymentIntegration = ({ amount, donorInfo, onSuccess, onError, onClose }) 
 
             {/* Bank Transfer Details */}
             {paymentMethod === 'bank' && (
-              <div className="mb-6 p-4 bg-gray-50 rounded-lg">
-                <h4 className="font-semibold text-gray-800 mb-3">Bank Transfer Details</h4>
-                <div className="space-y-2 text-sm">
+              <div className="mb-4 p-3 bg-gray-50 rounded-lg max-h-40 overflow-y-auto">
+                <h4 className="font-semibold text-gray-800 mb-2 text-sm">Bank Transfer Details</h4>
+                <div className="space-y-1 text-xs">
                   <div><strong>Bank:</strong> {bankDetails.bankName}</div>
                   <div><strong>Account Name:</strong> {bankDetails.accountName}</div>
                   <div><strong>Account Number:</strong> {bankDetails.accountNumber}</div>
                   <div><strong>Sort Code:</strong> {bankDetails.sortCode}</div>
                 </div>
-                <p className="text-xs text-gray-600 mt-3">
-                  Please use your email as the transfer reference and send proof of payment to donate@richmarkfoundation.org.ng
+                <p className="text-xs text-gray-600 mt-2 leading-tight">
+                  Use your email as reference and send proof to donate@richmarkfoundation.org.ng
                 </p>
               </div>
             )}
 
             {/* Action Buttons */}
-            <div className="flex gap-3">
+            <div className="flex gap-2 mt-4">
               <button
                 onClick={onClose}
-                className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 transition"
+                className="flex-1 px-3 py-2 text-sm border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 transition"
               >
                 Cancel
               </button>
@@ -209,9 +209,9 @@ const PaymentIntegration = ({ amount, donorInfo, onSuccess, onError, onClose }) 
                 onClick={paymentMethod === 'bank' ? () => {
                   setPaymentStatus('bank_info');
                 } : handlePaymentMethod}
-                className="flex-1 px-4 py-2 bg-[#228B22] text-white rounded-md hover:bg-green-700 transition"
+                className="flex-1 px-3 py-2 text-sm bg-[#228B22] text-white rounded-md hover:bg-green-700 transition"
               >
-                {paymentMethod === 'bank' ? 'Show Details' : 'Proceed to Payment'}
+                {paymentMethod === 'bank' ? 'Show Details' : 'Proceed'}
               </button>
             </div>
           </>

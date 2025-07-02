@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Navbar from '../Navbar';
 import Footer from '../Footer';
+import { sendVolunteerApplication, sendVolunteerConfirmation } from '../../services/emailService';
+import { CheckCircle, AlertCircle, Loader } from 'lucide-react';
 
 const Volunteer = () => {
   const [formData, setFormData] = useState({
@@ -14,6 +16,10 @@ const Volunteer = () => {
     experience: '',
     motivation: ''
   });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null); // 'success', 'error', or null
+  const [submitMessage, setSubmitMessage] = useState('');
 
   const volunteerAreas = [
     'Health Programs',
@@ -46,20 +52,60 @@ const Volunteer = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert('Thank you for your interest in volunteering! We will contact you soon. (This is a demo form)');
-    setFormData({
-      firstName: '',
-      lastName: '',
-      email: '',
-      phone: '',
-      age: '',
-      interests: [],
-      availability: '',
-      experience: '',
-      motivation: ''
-    });
+
+    // Validate required fields
+    if (!formData.firstName || !formData.lastName || !formData.email || !formData.phone) {
+      setSubmitStatus('error');
+      setSubmitMessage('Please fill in all required fields.');
+      return;
+    }
+
+    if (formData.interests.length === 0) {
+      setSubmitStatus('error');
+      setSubmitMessage('Please select at least one area of interest.');
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+    setSubmitMessage('');
+
+    try {
+      // Send volunteer application to foundation email
+      const applicationResult = await sendVolunteerApplication(formData);
+
+      if (applicationResult.success) {
+        // Send confirmation email to volunteer
+        await sendVolunteerConfirmation(formData);
+
+        setSubmitStatus('success');
+        setSubmitMessage('Thank you for your volunteer application! We have received your information and will contact you soon. A confirmation email has been sent to your email address.');
+
+        // Reset form
+        setFormData({
+          firstName: '',
+          lastName: '',
+          email: '',
+          phone: '',
+          age: '',
+          interests: [],
+          availability: '',
+          experience: '',
+          motivation: ''
+        });
+      } else {
+        setSubmitStatus('error');
+        setSubmitMessage(applicationResult.message);
+      }
+    } catch (error) {
+      console.error('Error submitting volunteer application:', error);
+      setSubmitStatus('error');
+      setSubmitMessage('An unexpected error occurred. Please try again or contact us directly at volunteer@richmarkfoundation.org.ng');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -296,16 +342,39 @@ const Volunteer = () => {
                 />
               </div>
 
+              {/* Status Messages */}
+              {submitStatus === 'error' && (
+                <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-md flex items-start gap-3">
+                  <AlertCircle className="w-5 h-5 text-red-500 mt-0.5 flex-shrink-0" />
+                  <span className="text-red-700">{submitMessage}</span>
+                </div>
+              )}
+
+              {submitStatus === 'success' && (
+                <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-md flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+                  <span className="text-green-700">{submitMessage}</span>
+                </div>
+              )}
+
               {/* Submit Button */}
               <div className="text-center">
                 <button
                   type="submit"
-                  className="bg-[#FFA500] hover:bg-orange-600 text-white px-12 py-4 rounded-md font-semibold text-lg transition duration-300"
+                  disabled={isSubmitting}
+                  className="bg-[#FFA500] hover:bg-orange-600 disabled:bg-gray-400 disabled:cursor-not-allowed text-white px-12 py-4 rounded-md font-semibold text-lg transition duration-300 flex items-center justify-center gap-2 mx-auto"
                 >
-                  Submit Application
+                  {isSubmitting ? (
+                    <>
+                      <Loader className="w-5 h-5 animate-spin" />
+                      Sending Application...
+                    </>
+                  ) : (
+                    'Submit Application'
+                  )}
                 </button>
                 <p className="text-sm text-gray-500 mt-4">
-                  This is a demo form. No actual application will be processed.
+                  Your application will be sent directly to volunteer@richmarkfoundation.org.ng
                 </p>
               </div>
             </form>
