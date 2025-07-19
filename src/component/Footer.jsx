@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
+import { FOUNDATION_EMAILS, FOUNDATION_CONTACT } from '../config/emailConfig.js';
 
 const Footer = () => {
   return (
@@ -34,11 +35,11 @@ const Footer = () => {
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-[#FFA500]" />
-                <span className="text-gray-300">+234 (0) 901 234 5678</span>
+                <span className="text-gray-300">{FOUNDATION_CONTACT.phone}</span>
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-[#FFA500]" />
-                <span className="text-gray-300">info@richmarkfoundation.org.ng</span>
+                <span className="text-gray-300">{FOUNDATION_EMAILS.info}</span>
               </div>
             </div>
           </div>

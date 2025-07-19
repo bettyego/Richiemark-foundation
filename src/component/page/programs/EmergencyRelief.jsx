@@ -323,10 +323,11 @@ const EmergencyRelief = () => {
             <div className="text-lg text-gray-700 mb-4">
               <strong>24/7 Emergency Line:</strong><br />
               +234 (0) 199 (Nigeria Emergency)<br />
-              +234 (0) 802 987 6543 (Richmark Emergency)
+              +234 (0) 911 054 9719 (Richmark Emergency)
             </div>
             <div className="text-sm text-gray-600">
-              For non-emergency assistance, call our main line at +234 (0) 901 234 5678
+              For non-emergency assistance, call our main line at +447881189844
+
             </div>
           </div>
         </div>

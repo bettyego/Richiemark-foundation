@@ -12,6 +12,8 @@ import HumanRights from "./component/page/programs/HumanRights";
 import BloodDonation from "./component/page/programs/BloodDonation";
 import CommunityServices from "./component/page/programs/CommunityServices";
 import EmergencyRelief from "./component/page/programs/EmergencyRelief";
+import Newsletter from "./component/page/Newsletter";
+import NewsletterArticle from "./component/page/NewsletterArticle";
 import ErrorBoundary from "./component/ErrorBoundary";
 
 function App() {
@@ -32,6 +34,8 @@ function App() {
             <Route path="/programs/blood-donation" element={<BloodDonation />} />
             <Route path="/programs/community-services" element={<CommunityServices />} />
             <Route path="/programs/emergency-relief" element={<EmergencyRelief />} />
+            <Route path="/newsletter" element={<Newsletter />} />
+            <Route path="/newsletter/article/:id" element={<NewsletterArticle />} />
           </Routes>
         </Router>
       </div>

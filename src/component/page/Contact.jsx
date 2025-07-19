@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Navbar from '../Navbar';
 import Footer from '../Footer';
 import { Mail, Phone, MapPin, Clock } from 'lucide-react';
+import { FOUNDATION_EMAILS, FOUNDATION_CONTACT } from '../../config/emailConfig.js';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -59,9 +60,7 @@ const Contact = () => {
                   <div>
                     <h3 className="text-lg font-semibold text-gray-800 mb-1">Address</h3>
                     <p className="text-gray-600">
-                      15 Ademola Adetokunbo Street<br />
-                      Victoria Island, Lagos<br />
-                      Nigeria
+                      {FOUNDATION_CONTACT.address}
                     </p>
                   </div>
                 </div>
@@ -73,7 +72,7 @@ const Contact = () => {
                   <div>
                     <h3 className="text-lg font-semibold text-gray-800 mb-1">Phone</h3>
                     <p className="text-gray-600">
-                      Main: +234 (0) 901 234 5678<br />
+                      Main: {FOUNDATION_CONTACT.phone}<br />
                       Emergency: +234 (0) 802 987 6543
                     </p>
                   </div>
@@ -86,8 +85,9 @@ const Contact = () => {
                   <div>
                     <h3 className="text-lg font-semibold text-gray-800 mb-1">Email</h3>
                     <p className="text-gray-600">
-                      General: info@richmarkfoundation.org.ng<br />
-                      Donations: donate@richmarkfoundation.org.ng
+                      General: {FOUNDATION_EMAILS.info}<br />
+                      Director: {FOUNDATION_EMAILS.director}<br />
+                      Coordinator: {FOUNDATION_EMAILS.coordinator}
                     </p>
                   </div>
                 </div>

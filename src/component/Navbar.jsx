@@ -11,6 +11,7 @@ const Navbar = () => {
     { name: 'Focus Areas', path: '/focus' },
     { name: 'Donate', path: '/donate' },
     { name: 'Contact', path: '/contact' },
+    { name: 'Newsletter', path: '/newsletter' }, // Added Newsletter link
   ];
 
   return (

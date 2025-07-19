@@ -1,6 +1,8 @@
 // Email Service for Richmark Foundation
 // This service handles sending emails via EmailJS
 
+import { FOUNDATION_EMAILS, EMAIL_TEMPLATES } from '../config/emailConfig.js';
+
 // EmailJS configuration
 const EMAILJS_CONFIG = {
   serviceId: import.meta.env?.VITE_EMAILJS_SERVICE_ID || 'service_richmark',
@@ -36,25 +38,19 @@ export const sendVolunteerApplication = async (volunteerData) => {
   try {
     // Check if we're in demo mode
     if (EMAILJS_CONFIG.publicKey === 'demo_mode') {
-      console.log('Demo mode: Volunteer application would be sent:', volunteerData);
-      // Simulate email sending delay
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      return {
-        success: true,
-        message: 'Demo mode: Application submitted successfully! (No actual email sent)'
-      };
+      console.log('Demo mode: Volunteer application would be sent for:', volunteerData.email);
+      return { success: true };
     }
 
-    // Load EmailJS if not already loaded
     const emailjsInstance = await loadEmailJS();
 
-    // Prepare email template parameters
     const templateParams = {
-      to_email: 'volunteer@richmarkfoundation.org.ng', // Foundation email
-      from_name: `${volunteerData.firstName} ${volunteerData.lastName}`,
-      from_email: volunteerData.email,
-      phone: volunteerData.phone,
-      age: volunteerData.age,
+      to_email: FOUNDATION_EMAILS.volunteer, // Foundation's email
+      cc_email: FOUNDATION_EMAILS.coordinator, // CC to coordinator
+      volunteer_name: `${volunteerData.firstName} ${volunteerData.lastName}`,
+      volunteer_email: volunteerData.email,
+      volunteer_phone: volunteerData.phone,
+      volunteer_age: volunteerData.age,
       interests: volunteerData.interests.join(', '),
       availability: volunteerData.availability,
       experience: volunteerData.experience,
@@ -63,22 +59,35 @@ export const sendVolunteerApplication = async (volunteerData) => {
       application_time: new Date().toLocaleTimeString('en-NG')
     };
 
-    // Send email using EmailJS
-    const response = await emailjsInstance.send(
+    await emailjsInstance.send(
       EMAILJS_CONFIG.serviceId,
       EMAILJS_CONFIG.templateId,
       templateParams
     );
 
-    console.log('Volunteer application sent successfully:', response);
-    return { success: true, message: 'Application sent successfully!' };
+    console.log('Volunteer application sent to foundation');
+    return { success: true };
 
   } catch (error) {
     console.error('Failed to send volunteer application:', error);
-    return { 
-      success: false, 
-      message: 'Failed to send application. Please try again or contact us directly.' 
+    throw new Error('Failed to submit application. Please try again.');
+  }
+};
+
+// Newsletter subscription
+export const subscribeToNewsletter = async (email) => {
+  try {
+    // In a real implementation, this would be an API call to your email service
+    // For now, we'll simulate the API call
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
+    return {
+      success: true,
+      message: `Thank you for subscribing! You'll receive a confirmation email from ${FOUNDATION_EMAILS.info}`
     };
+  } catch (error) {
+    console.error('Newsletter subscription error:', error);
+    throw new Error(`Failed to subscribe. Please email us directly at ${FOUNDATION_EMAILS.info}`);
   }
 };
 
@@ -96,8 +105,9 @@ export const sendVolunteerConfirmation = async (volunteerData) => {
     const templateParams = {
       to_email: volunteerData.email, // Volunteer's email
       volunteer_name: `${volunteerData.firstName} ${volunteerData.lastName}`,
-      foundation_email: 'volunteer@richmarkfoundation.org.ng',
-      foundation_phone: '+234-901-234-5678',
+      foundation_email: FOUNDATION_EMAILS.info,
+      foundation_phone: '+234 (0) 911 054 9719',
+      coordinator_email: FOUNDATION_EMAILS.coordinator,
       interests: volunteerData.interests.join(', ')
     };
 
@@ -115,7 +125,7 @@ export const sendVolunteerConfirmation = async (volunteerData) => {
 
   } catch (error) {
     console.error('Failed to send confirmation email:', error);
-    return { success: false };
+    throw new Error('Failed to send confirmation email. Please try again.');
   }
 };
 
@@ -125,7 +135,7 @@ export const sendContactMessage = async (contactData) => {
     const emailjsInstance = await loadEmailJS();
 
     const templateParams = {
-      to_email: 'info@richmarkfoundation.org.ng',
+      to_email: FOUNDATION_EMAILS.contact,
       from_name: contactData.name,
       from_email: contactData.email,
       subject: contactData.subject,
@@ -180,5 +190,6 @@ export default {
   sendVolunteerApplication,
   sendVolunteerConfirmation,
   sendContactMessage,
+  subscribeToNewsletter,
   validateEmailConfig
 };
