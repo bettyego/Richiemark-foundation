@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 
 const SEO = ({
-  title = "Richmark Foundation - Empowering Nigerian Communities",
-  description = "Richmark Foundation is dedicated to empowering Nigerian communities through health, education, human rights, and sustainable development initiatives.",
-  keywords = "Nigeria foundation, charity, health, education, human rights, community development, Lagos, donation",
+  title = "Richmark Humanitarian Foundation - Empowering Nigerian Communities",
+  description = "Richmark Humanitarian Foundation is dedicated to empowering Nigerian communities through health, education, human rights, and sustainable development initiatives.",
+  keywords = "Nigeria foundation, charity, health, education, human rights, community development, Abuja, Abia, donation, humanitarian",
   image = "/richiemark.jpg",
-  url = "https://richmarkfoundation.org.ng"
+  url = "https://richmarkfoundation.com"
 }) => {
-  const fullTitle = title.includes('Richmark Foundation') ? title : `${title} | Richmark Foundation`;
+  const fullTitle = title.includes('Richmark') ? title : `${title} | Richmark Humanitarian Foundation`;
 
   useEffect(() => {
     // Update document title
@@ -33,7 +33,7 @@ const SEO = ({
     // Basic meta tags
     updateMetaTag('description', description);
     updateMetaTag('keywords', keywords);
-    updateMetaTag('author', 'Richmark Foundation');
+    updateMetaTag('author', 'Richmark Humanitarian Foundation');
     updateMetaTag('robots', 'index, follow');
 
     // Open Graph tags
@@ -61,23 +61,42 @@ const SEO = ({
     structuredData.textContent = JSON.stringify({
       "@context": "https://schema.org",
       "@type": "NGO",
-      "name": "Richmark Foundation",
+      "name": "Richmark Humanitarian Foundation",
       "description": description,
       "url": url,
       "logo": image,
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "15 Ademola Adetokunbo Street",
-        "addressLocality": "Victoria Island",
-        "addressRegion": "Lagos",
-        "addressCountry": "Nigeria"
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+234-901-234-5678",
-        "contactType": "customer service",
-        "availableLanguage": "English"
-      }
+      "address": [
+        {
+          "@type": "PostalAddress",
+          "name": "Head Office",
+          "streetAddress": "Plot 3 Hill view estate Kubwa",
+          "addressLocality": "Kubwa",
+          "addressRegion": "Abuja",
+          "addressCountry": "Nigeria"
+        },
+        {
+          "@type": "PostalAddress",
+          "name": "Branch Office",
+          "streetAddress": "160 Faulks road Aba",
+          "addressLocality": "Aba",
+          "addressRegion": "Abia state",
+          "addressCountry": "Nigeria"
+        }
+      ],
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "09110549719",
+          "contactType": "customer service",
+          "availableLanguage": "English"
+        },
+        {
+          "@type": "ContactPoint",
+          "telephone": "07042034473",
+          "contactType": "WhatsApp",
+          "availableLanguage": "English"
+        }
+      ]
     });
   }, [fullTitle, description, keywords, image, url]);
 

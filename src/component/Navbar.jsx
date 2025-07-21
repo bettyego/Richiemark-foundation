@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 
@@ -31,8 +31,8 @@ const Navbar = () => {
             alt="Richmark Foundation Logo"
             className="w-10 h-10 object-contain rounded-full"
           />
-          <span className="text-xl md:text-2xl font-bold text-[#228B22]">
-            Richmark Foundation
+          <span className="text-xl md:text-2xl font-display font-bold text-[#228B22] tracking-tight">
+            Richmark Humanitarian Foundation
           </span>
         </Link>
 
@@ -43,7 +43,7 @@ const Navbar = () => {
               <NavLink
                 to={link.path}
                 className={({ isActive }) =>
-                  `transition font-medium ${
+                  `transition font-medium font-accent tracking-wide ${
                     isActive
                       ? 'text-[#FFA500] underline'
                       : 'text-gray-700 hover:text-[#FFA500]'

@@ -82,17 +82,17 @@ const Hero = () => {
             {/* Icon Badge */}
             <div className="inline-flex items-center gap-3 bg-white/20 backdrop-blur-sm rounded-full px-6 py-3 border border-white/30">
               <IconComponent className="w-6 h-6 text-[#FFA500]" />
-              <span className="text-sm font-semibold tracking-wide">{currentSlideData.subtitle}</span>
+              <span className="text-sm font-accent font-semibold tracking-wider uppercase">{currentSlideData.subtitle}</span>
             </div>
 
             {/* Main Heading */}
-            <h1 className="text-5xl md:text-7xl font-bold leading-tight">
-              <span className="block text-white">{currentSlideData.title.split('.')[0]}.</span>
-              <span className="block text-[#FFA500] mt-2">{currentSlideData.title.split('.')[1]}.</span>
+            <h1 className="text-5xl md:text-7xl font-display font-bold leading-tight tracking-tight">
+              <span className="block text-white font-extrabold">{currentSlideData.title.split('.')[0]}.</span>
+              <span className="block text-[#FFA500] mt-2 font-bold">{currentSlideData.title.split('.')[1]}.</span>
             </h1>
 
             {/* Description */}
-            <p className="text-xl md:text-2xl text-white/90 leading-relaxed max-w-2xl">
+            <p className="text-xl md:text-2xl font-body text-white/90 leading-relaxed max-w-2xl tracking-wide">
               {currentSlideData.description}
             </p>
 
@@ -100,14 +100,14 @@ const Hero = () => {
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <a
                 href="/donate"
-                className="group bg-[#FFA500] hover:bg-orange-600 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl flex items-center justify-center gap-2"
+                className="group bg-[#FFA500] hover:bg-orange-600 text-white px-8 py-4 rounded-full text-lg font-accent font-semibold tracking-wide transition-all duration-300 transform hover:scale-105 hover:shadow-2xl flex items-center justify-center gap-2"
               >
                 <Heart className="w-5 h-5 group-hover:animate-pulse" />
                 Donate Now
               </a>
               <a
                 href="/volunteer"
-                className="group bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white border-2 border-white/50 hover:border-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2"
+                className="group bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white border-2 border-white/50 hover:border-white px-8 py-4 rounded-full text-lg font-accent font-semibold tracking-wide transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2"
               >
                 <Users className="w-5 h-5" />
                 Join Us

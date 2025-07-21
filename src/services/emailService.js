@@ -1,7 +1,7 @@
 // Email Service for Richmark Foundation
 // This service handles sending emails via EmailJS
 
-import { FOUNDATION_EMAILS, EMAIL_TEMPLATES } from '../config/emailConfig.js';
+import { FOUNDATION_EMAILS } from '../config/emailConfig.js';
 
 // EmailJS configuration
 const EMAILJS_CONFIG = {
@@ -36,10 +36,10 @@ const loadEmailJS = () => {
 // Send volunteer application email
 export const sendVolunteerApplication = async (volunteerData) => {
   try {
-    // Check if we're in demo mode
+    // Check if EmailJS is configured
     if (EMAILJS_CONFIG.publicKey === 'demo_mode') {
-      console.log('Demo mode: Volunteer application would be sent for:', volunteerData.email);
-      return { success: true };
+      console.log('EmailJS not configured. Volunteer application received for:', volunteerData.email);
+      throw new Error('Email service is not configured. Please contact us directly at ' + FOUNDATION_EMAILS.info);
     }
 
     const emailjsInstance = await loadEmailJS();
@@ -94,10 +94,10 @@ export const subscribeToNewsletter = async (email) => {
 // Send confirmation email to volunteer
 export const sendVolunteerConfirmation = async (volunteerData) => {
   try {
-    // Check if we're in demo mode
+    // Check if EmailJS is configured
     if (EMAILJS_CONFIG.publicKey === 'demo_mode') {
-      console.log('Demo mode: Confirmation email would be sent to:', volunteerData.email);
-      return { success: true };
+      console.log('EmailJS not configured. Confirmation email would be sent to:', volunteerData.email);
+      throw new Error('Email service is not configured. Please contact us directly at ' + FOUNDATION_EMAILS.info);
     }
 
     const emailjsInstance = await loadEmailJS();
@@ -147,7 +147,7 @@ export const sendContactMessage = async (contactData) => {
 
     const contactTemplateId = import.meta.env.VITE_EMAILJS_CONTACT_TEMPLATE_ID || 'template_contact';
 
-    const response = await emailjsInstance.send(
+    await emailjsInstance.send(
       EMAILJS_CONFIG.serviceId,
       contactTemplateId,
       templateParams

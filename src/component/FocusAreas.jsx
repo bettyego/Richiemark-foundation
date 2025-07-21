@@ -36,11 +36,11 @@ const focusAreas = [
 const FocusAreas = () => {
   return (
     <section className="w-full py-20 px-4 md:px-20 bg-white">
-        <h1 className="text-3xl md:text-5xl font-bold text-center text-primary mb-4">
+        <h1 className="text-3xl md:text-5xl font-display font-extrabold text-center text-primary mb-4 tracking-tight">
           Our Focus Areas
         </h1>
-        <p className="text-center text-gray-600 max-w-3xl mx-auto mb-12">
-          At Richmark Foundation, we are committed to creating lasting change by addressing key
+        <p className="text-center font-body text-gray-600 max-w-3xl mx-auto mb-12 leading-relaxed tracking-wide">
+          At Richmark Humanitarian Foundation, we are committed to creating lasting change by addressing key
           areas affecting our communities. Learn more about our core areas of impact.
         </p>
 

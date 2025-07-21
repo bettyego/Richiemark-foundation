@@ -80,3 +80,20 @@ To update email addresses:
 - The system is designed to be easily configurable through the central config file
 - Email templates in EmailJS should be updated to match these addresses
 - Make sure to update your EmailJS service configuration to use these email addresses
+
+## Contact Information
+
+### Addresses
+- **Head Office**: Plot 3 Hill view estate Kubwa, Abuja
+- **Branch Office**: 160 Faulks road Aba, Abia state
+
+### Phone Numbers
+- **Main**: 09110549719
+- **WhatsApp**: 07042034473
+
+### Social Media
+- **Facebook**: Richmark Humanitarian Foundation
+- **Instagram**: Richmark Humanitarian Foundation
+- **TikTok**: Richmark Humanitarian Foundation
+- **Twitter**: Richmark Humanitarian Foundation
+- **LinkedIn**: Richmark Humanitarian Foundation

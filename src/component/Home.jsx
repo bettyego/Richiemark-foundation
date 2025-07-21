@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Navbar from "./Navbar";
 import Hero from "./Hero";
@@ -15,8 +15,8 @@ const Home = () => {
   return (
     <div className="w-full min-h-screen">
       <SEO
-        title="Home - Richmark Foundation"
-        description="Richmark Foundation empowers Nigerian communities through health, education, human rights, and sustainable development initiatives. Join us in making a difference."
+        title="Home - Richmark Humanitarian Foundation"
+        description="Richmark Humanitarian Foundation empowers Nigerian communities through health, education, human rights, and sustainable development initiatives. Join us in making a difference."
       />
       <Navbar />
       <Hero />

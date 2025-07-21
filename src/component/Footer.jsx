@@ -18,11 +18,11 @@ const Footer = () => {
                 alt="Richmark Foundation Logo"
                 className="w-10 h-10 object-contain rounded-full"
               />
-              <span className="text-xl font-bold text-[#FFA500]">
-                Richmark Foundation
+              <span className="text-xl font-display font-bold text-[#FFA500] tracking-tight">
+                Richmark Humanitarian Foundation
               </span>
             </div>
-            <p className="text-gray-300 mb-6 leading-relaxed">
+            <p className="text-gray-300 mb-6 leading-relaxed font-body tracking-wide">
               Dedicated to empowering Nigerian communities through health, education, human rights,
               and sustainable development initiatives. Together, we create lasting positive change across Nigeria.
             </p>
@@ -31,11 +31,11 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center gap-3">
                 <MapPin className="w-5 h-5 text-[#FFA500]" />
-                <span className="text-gray-300">15 Ademola Adetokunbo Street, Victoria Island, Lagos, Nigeria</span>
+                <span className="text-gray-300">{FOUNDATION_CONTACT.address.head_office}</span>
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-[#FFA500]" />
-                <span className="text-gray-300">{FOUNDATION_CONTACT.phone}</span>
+                <span className="text-gray-300">{FOUNDATION_CONTACT.phone.main}</span>
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-[#FFA500]" />
@@ -184,7 +184,7 @@ const Footer = () => {
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-gray-400 text-sm">
-              © 2024 Richmark Foundation. All rights reserved.
+              © 2024 Richmark Humanitarian Foundation. All rights reserved.
             </p>
             <div className="flex gap-6 text-sm text-gray-400">
               <a href="#" className="hover:text-white transition">Privacy Policy</a>

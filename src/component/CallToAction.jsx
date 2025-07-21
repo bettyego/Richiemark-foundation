@@ -9,7 +9,7 @@ const CallToAction = () => {
           Ready to Make a Difference?
         </h2>
         <p className="text-lg text-gray-700 mb-10 max-w-2xl mx-auto">
-          Join Richmark Foundation in supporting health, education, human rights, and community services. Every action counts.
+          Join Richmark Humanitarian Foundation in supporting health, education, human rights, and community services. Every action counts.
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-6">
           <Link

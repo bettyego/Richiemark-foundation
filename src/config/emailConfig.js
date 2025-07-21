@@ -38,17 +38,24 @@ export const EMAIL_TEMPLATES = {
 
 // Foundation contact information
 export const FOUNDATION_CONTACT = {
-  name: 'Richmark Foundation',
-  phone: '+234 (0) 911 054 9719',
-  address: '15 Ademola Adetokunbo Street, Victoria Island, Lagos, Nigeria',
+  name: 'Richmark Humanitarian Foundation',
+  phone: {
+    main: '09110549719',
+    whatsapp: '07042034473',
+  },
+  address: {
+    head_office: 'Plot 3 Hill view estate Kubwa, Abuja',
+    branch_office: '160 Faulks road Aba, Abia state',
+  },
   website: 'https://richmarkfoundation.com',
-  
-  // Social media (if needed)
+
+  // Social media
   social: {
-    facebook: 'https://facebook.com/richmarkfoundation',
-    twitter: 'https://twitter.com/richmarkfoundation',
-    instagram: 'https://instagram.com/richmarkfoundation',
-    linkedin: 'https://linkedin.com/company/richmarkfoundation',
+    facebook: 'Richmark Humanitarian Foundation',
+    instagram: 'Richmark Humanitarian Foundation',
+    tiktok: 'Richmark Humanitarian Foundation',
+    twitter: 'Richmark Humanitarian Foundation',
+    linkedin: 'Richmark Humanitarian Foundation',
   },
 };
 
