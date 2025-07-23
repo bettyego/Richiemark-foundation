@@ -1,5 +1,4 @@
 // import React from "react";
-import { Route, Routes } from "react-router-dom";
 import Navbar from "./Navbar";
 import Hero from "./Hero";
 import FocusAreas from "./FocusAreas";
@@ -8,7 +7,6 @@ import CallToAction from "./CallToAction";
 import Footer from "./Footer";
 import SEO from "./SEO";
 import BackToTop from "./BackToTop";
-import Newsletter from "./page/Newsletter";
 import NewsletterPreview from "./page/NewsletterPreview";
 
 const Home = () => {
@@ -26,9 +24,6 @@ const Home = () => {
       <NewsletterPreview />
       <Footer />
       <BackToTop />
-      <Routes>
-        <Route path="/newsletter" element={<Newsletter />} />
-      </Routes>
     </div>
   );
 };

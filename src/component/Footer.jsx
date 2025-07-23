@@ -194,6 +194,19 @@ const Footer = () => {
           </div>
         </div>
       </div>
+       {/* Developer Signature */}
+          <div className="border-t border-gray-700 pt-4 text-center">
+            <div className="flex items-center justify-center space-x-2 text-sm text-gray-400">
+              <span>Designed and developed by</span>
+              <span className="text-blue-400 font-semibold hover:text-blue-300 transition cursor-pointer">
+                Onuoha-Mba Bethel Nwakaego
+              </span>
+              <span className="text-red-400">❤️</span>
+            </div>
+            <div className="mt-1 text-xs text-gray-500">
+              Full Stack Developer & UI/UX Designer
+            </div>
+          </div>
     </footer>
   );
 };

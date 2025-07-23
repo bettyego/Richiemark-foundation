@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./component/Home";
 import About from "./component/page/About";
@@ -15,6 +15,7 @@ import EmergencyRelief from "./component/page/programs/EmergencyRelief";
 import Newsletter from "./component/page/Newsletter";
 import NewsletterArticle from "./component/page/NewsletterArticle";
 import ErrorBoundary from "./component/ErrorBoundary";
+import EmailButton from "./component/EmailButton";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
             <Route path="/newsletter" element={<Newsletter />} />
             <Route path="/newsletter/article/:id" element={<NewsletterArticle />} />
           </Routes>
+          <EmailButton />
         </Router>
       </div>
     </ErrorBoundary>
