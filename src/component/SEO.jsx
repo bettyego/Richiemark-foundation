@@ -69,9 +69,9 @@ const SEO = ({
         {
           "@type": "PostalAddress",
           "name": "Head Office",
-          "streetAddress": "Plot 3 Hill view estate Kubwa",
-          "addressLocality": "Kubwa",
-          "addressRegion": "Abuja",
+          "streetAddress": "No 71 Nouakchott street, Suit 6 ground floor, wuse zone 1",
+          "addressLocality": "Wuse Zone 1",
+          "addressRegion": "FCT, Abuja",
           "addressCountry": "Nigeria"
         },
         {

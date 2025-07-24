@@ -44,7 +44,7 @@ export const FOUNDATION_CONTACT = {
     whatsapp: '07042034473',
   },
   address: {
-    head_office: 'Plot 3 Hill view estate Kubwa, Abuja',
+    head_office: 'No 71 Nouakchott street, Suit 6 ground floor, wuse zone 1, FCT,Abuja',
     branch_office: '160 Faulks road Aba, Abia state',
   },
   website: 'https://richmarkfoundation.com',
